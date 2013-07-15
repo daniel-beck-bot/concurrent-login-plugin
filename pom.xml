@@ -9,11 +9,11 @@
 
   <groupId>hudson.plugins.concurrent_login</groupId>
   <artifactId>concurrent-login-plugin</artifactId>
-  <version>0.2-SNAPSHOT</version>
+  <version>0.3-SNAPSHOT</version>
   <packaging>hpi</packaging>
   <name>Concurrent Login Plugin</name>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/Concurrent+Login+Plugin</url>
-  <description>A plugin which can intercept concurrent login in Jenkins </description>  
+  <description>A plugin which can intercept concurrent login in Jenkins</description>  
 
   <developers>
     <developer>
