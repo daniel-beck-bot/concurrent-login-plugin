@@ -9,7 +9,7 @@
 
   <groupId>hudson.plugins.concurrent_login</groupId>
   <artifactId>concurrent-login-plugin</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.2-SNAPSHOT</version>
   <packaging>hpi</packaging>
 
   <developers>
@@ -20,6 +20,9 @@
     </developer>
   </developers>
 
+  <name>Concurrent Login Plugin</name>
+  <url>http://wiki.jenkins-ci.org/display/JENKINS/Concurrent+Login+Plugin</url>
+  
   <scm>
     <connection>scm:git:git://github.com/jenkinsci/concurrent-login-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/concurrent-login-plugin.git</developerConnection>
@@ -66,12 +69,6 @@
         <version>2.3.2</version>
         <configuration>
           <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <configuration>
-          <goals>deploy</goals>
         </configuration>
       </plugin>
     </plugins>
