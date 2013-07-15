@@ -9,7 +9,7 @@
 
   <groupId>hudson.plugins.concurrent_login</groupId>
   <artifactId>concurrent-login-plugin</artifactId>
-  <version>0.2-SNAPSHOT</version>
+  <version>0.2</version>
   <packaging>hpi</packaging>
 
   <developers>
