@@ -12,24 +12,15 @@ import jenkins.model.Jenkins;
 
 import hudson.Extension;
 import hudson.model.PageDecorator;
-import hudson.model.Descriptor.FormException;
-
-import net.sf.json.JSONObject;
+import hudson.model.Hudson;
 
 import org.acegisecurity.Authentication;
-import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.export.Exported;
+
+import hudson.plugins.concurrent_login.UserInfoProperty.DescriptorImpl;
 
 @Extension
 public class UserInfoDecorator extends PageDecorator {
-	/**
-	 * To persist global configuration information, simply store it in a field
-	 * and call save().
-	 * 
-	 * <p>
-	 * If you don't want fields to be persisted, use <tt>transient</tt>.
-	 */
-	private boolean useInterceptConcurrentLogin;
 
 	private String sess_id;
 	private String alreadyLoginID;
@@ -37,7 +28,7 @@ public class UserInfoDecorator extends PageDecorator {
 	final Logger logger = Logger.getLogger("hudson.plugins.concurrent_login");
 
 	public UserInfoDecorator() {
-		logger.log(Level.INFO, "Loading UserInfoDecorator...");
+		logger.log(Level.INFO, "***** Loading UserInfoDecorator...");
 		load();
 	}
 
@@ -54,7 +45,10 @@ public class UserInfoDecorator extends PageDecorator {
 	 */
 	public void requestInfo(HttpServletRequest request,
 			HttpServletResponse response, String loginUserID) {
-		if (getuseInterceptConcurrentLogin()) {
+		
+		DescriptorImpl descriptor = Hudson.getInstance().getDescriptorByType(UserInfoProperty.DescriptorImpl.class);
+		
+		if (descriptor.getuseConcurrentLogin()) {
 			alreadyLoginID = null;
 
 			HttpSession session = request.getSession(false);
@@ -104,28 +98,7 @@ public class UserInfoDecorator extends PageDecorator {
 		return Jenkins.getAuthentication();
 	}
 
-	@Override
-	public boolean configure(StaplerRequest req, JSONObject formData)
-			throws FormException {
-		// To persist global configuration information,
-		// set that to properties and call save().
-		useInterceptConcurrentLogin = formData
-				.getBoolean("useInterceptConcurrentLogin");
-		// ^Can also use req.bindJSON(this, formData);
-		// (easier when there are many fields; need set* methods for this, like
-		// setuseApply)
-		save();
-		return super.configure(req, formData);
-	}
-
-	/**
-	 * This method returns true if the global configuration says we should use
-	 * concurrent login
-	 * 
-	 * The method name is bit awkward because global.jelly calls this method to
-	 * determine the initial state of the checkbox by the naming convention.
-	 */
-	public boolean getuseInterceptConcurrentLogin() {
-		return useInterceptConcurrentLogin;
-	}
+    //public boolean getuseInterceptConcurrentLogin() {
+    //    return Hudson.getInstance().getDescriptorByType(UserInfoProperty.DescriptorImpl.class).getuseConcurrentLogin();
+    //}
 }
