@@ -9,7 +9,7 @@
 
   <groupId>hudson.plugins.concurrent_login</groupId>
   <artifactId>concurrent-login-plugin</artifactId>
-  <version>0.6-SNAPSHOT</version>
+  <version>0.6</version>
   <packaging>hpi</packaging>
   <name>Concurrent Login Plugin</name>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/Concurrent+Login+Plugin</url>
