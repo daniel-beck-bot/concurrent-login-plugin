@@ -3,6 +3,10 @@ concurrent-login-plugin
 
 To intercept concurrent login in Jenkins 
 
+If you use Jenkins authentication, it does not support concurrent login.
+For security reasons, the plugin is useful when concurrent access should not be allowed
+If you install the plugin and configure, you can only connection by one account.
+session timeout settings: settings in the WAS or supports itself(1 min).
 
 Author
 ------------------------------
